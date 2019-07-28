@@ -1,0 +1,122 @@
+:root {
+    --mainGreyish: #343a40;
+}
+
+.budget-header {
+    margin-top: 1rem;
+    background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.1) 100%
+        ),
+        url("../img/bg-masthead.jpg");
+    /* background-attachment: stretch; */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 35vh;
+    /* background-attachment: fixed;
+    background-origin: border-box; */
+    padding-top: 2rem;
+
+    color: #ffffff;
+}
+
+.budget-total {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    font-weight: lighter;
+    font-size: 30px;
+}
+
+.budget-top > h2 {
+    font-size: 25px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+}
+.budget-bottom {
+    margin: auto;
+}
+
+.budget-inc {
+    padding: 7px;
+    background-color: teal;
+    margin: 10px;
+    box-shadow: 0px 6px 3px 0px #353535;
+}
+
+.inc-text {
+    margin-right: 50px;
+    font-size: 2vh;
+    color: var(--mainGreyish);
+    font-weight: 500;
+    display: inline;
+}
+
+.budget-exp {
+    padding: 7px;
+    background-color: tomato;
+    margin: 10px;
+    box-shadow: 0px 6px 3px 0px #353535;
+}
+
+.exp-text {
+    margin-right: 50px;
+    font-size: 2vh;
+    color: var(--mainGreyish);
+    font-weight: 500;
+    display: inline;
+}
+
+.budget-input {
+    background-color: #f8f9fa;
+    height: 10vh;
+    color: #ffffff;
+    border-style: solid;
+    border-color: #e9ecef;
+    border-radius: 5px;
+    border-width: thin;
+    text-align: center;
+    padding: 12px;
+}
+.exp-total,
+.inc-total {
+    margin-left: 50px;
+}
+
+.input-container {
+    display: inline;
+}
+.select {
+    width: 30x;
+    height: 30;
+    border-radius: 4px;
+}
+
+.input-container > * {
+    border-radius: 4px;
+    padding: 3px;
+}
+
+.description {
+    width: 40vh;
+    color: var(--mainGreyish);
+}
+.value {
+    width: 20vh;
+    color: var(--mainGreyish);
+}
+
+.budget-show {
+    margin-top: 20px;
+    font-size: 3vh;
+}
+.inc-title {
+    font-weight: lighter;
+    color: green;
+}
+.exp-title {
+    font-weight: lighter;
+    color: red;
+}
