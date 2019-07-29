@@ -115,8 +115,30 @@
 .inc-title {
     font-weight: lighter;
     color: green;
+    background: #fff;
 }
 .exp-title {
     font-weight: lighter;
     color: red;
 }
+
+.inc-list > div:nth-child(even){
+    background: rgb(214, 255, 175);
+}
+.exp-list> div:nth-child(even){
+    background: rgb(255, 199, 199);
+}
+
+
+
+.inc-item,.exp-item{
+    padding: 15px;
+    margin-left: 40px;
+    margin-right: 20px;
+}
+
+/* .item-desc,
+.right {
+    display: inline-flex;
+    margin: auto;
+} */

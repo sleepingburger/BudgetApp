@@ -1,88 +1,76 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Page Title</title>
-        <link
-            rel="stylesheet"
-            type="text/css"
-            media="screen"
-            href=".\node_modules\bootstrap\dist\css\bootstrap.min.css"
-        />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            media="screen"
-            href=".\src\css\budget_app.css"
-        />
-    </head>
-    <body>
-        <div class="budget-header text-center">
-            <div class="row">
-                <div class="budget-top col-md-12">
-                    <h5>
-                        Available Budget in
-                        <span class="budget-month">%Month%</span>
-                    </h5>
-                    <div class="budget-total">+ 272,000.00</div>
-                </div>
-                <div class="budget-bottom col-md-3">
-                    <div class="budget-inc row">
-                        <div class="col-md-5">
-                            <div class="inc-text">INCOME</div>
-                        </div>
-                        <div class="col-md-5">
-                            <span class="inc-total">
-                                +5,5555
-                            </span>
-                        </div>
-                    </div>
 
-                    <div class="budget-exp row">
-                        <div class="col-md-5">
-                            <div class="exp-text">INCOME</div>
-                        </div>
-                        <div class="col-md-5">
-                            <span class="exp-total">
-                                +5,5555
-                            </span>
-                        </div>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <link rel="stylesheet" type="text/css" media="screen" href=".\node_modules\bootstrap\dist\css\bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href=".\src\css\budget_app.css" />
+</head>
+
+<body>
+    <div class="budget-header text-center">
+        <div class="row">
+            <div class="budget-top col-md-12">
+                <h5>
+                    Available Budget in
+                    <span class="budget-month">%Month%</span>
+                </h5>
+                <div class="budget-total">+ 272,000.00</div>
+            </div>
+            <div class="budget-bottom col-md-3">
+                <div class="budget-inc row">
+                    <div class="col-md-5">
+                        <div class="inc-text">INCOME</div>
+                    </div>
+                    <div class="col-md-5">
+                        <span class="inc-total">
+                            +5,5555
+                        </span>
+                    </div>
+                </div>
+
+                <div class="budget-exp row">
+                    <div class="col-md-5">
+                        <div class="exp-text">EXPENSE</div>
+                    </div>
+                    <div class="col-md-5">
+                        <span class="exp-total">0</span>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="exp-percentage badge badge-danger">--</span>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="budget-input">
-            <div class="container">
-                <div class="input-container">
-                    <select class="select mr-2" name="budget" id="1">
-                        <option value="inc" selected>+</option>
-                        <option value="exp">-</option>
-                    </select>
-                    <input
-                        type="text"
-                        class="description mr-2"
-                        placeholder="Add description"
-                    />
-                    <input
-                        class="value mr-2"
-                        type="number"
-                        placeholder="Value"
-                    />
-                    <button class="btn btn-primary">Add</button>
-                </div>
+    <div class="budget-input">
+        <div class="container">
+            <div class="input-container">
+                <select class="add-type mr-2" name="budget" id="1">
+                    <option value="inc" selected>+</option>
+                    <option value="exp">-</option>
+                </select>
+                <input type="text" class="add-desc mr-2" placeholder="Add description" />
+                <input class="add-val mr-2" type="number" placeholder="Value" />
+                <button class="add-budget" id="add-budget">Add</button>
             </div>
         </div>
+    </div>
 
-        <div class="budget-show">
-            <div class="row">
-                <div class="col-md-6 text-center">
-                    <div class="inc-title">INCOME</div>
-                </div>
-                <div class="col-md-6 text-center">
-                    <div class="exp-title">EXPENSES</div>
-                </div>
+    <div class="budget-show">
+        <div class="row">
+            <div class="col-md-6 text-center inc-list">
+                <div class="inc-title">INCOME</div>
+            </div>
+            <div class="col-md-6 text-center exp-list">
+                <div class="exp-title">EXPENSES</div>
             </div>
         </div>
-    </body>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
 </html>
