@@ -1,4 +1,4 @@
-var budgetController = (function () {
+/*var budgetController = (function () {
     var Expense = function (id, description, value) {
         this.id = id;
         this.description = description;
@@ -144,6 +144,9 @@ var UIController = (function () {
 })();
 
 var controller = (function (bdgtCtrl, UICtrl) {
+
+
+
     var setEventListener = () => {
         var DOM = UICtrl.getDOMStrings();
         document
@@ -200,8 +203,16 @@ var controller = (function (bdgtCtrl, UICtrl) {
                 percentage: 0
             });
             setEventListener();
+        },
+        test: (a, b) => {
+            return a + b;
         }
     };
-})(budgetController, UIController);
+})(budgetController, UIController); 
 
-controller.init();
+controller.init();*/
+function sum(a, b) {
+    return a + b;
+}
+
+module.exports = sum;
