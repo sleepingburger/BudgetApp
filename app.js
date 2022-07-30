@@ -1,4 +1,4 @@
-/*var budgetController = (function () {
+var budgetController = (function () {
     var Expense = function (id, description, value) {
         this.id = id;
         this.description = description;
@@ -21,11 +21,13 @@
     };
 
     var data = {
-        allItems: {
+        allItems: 
+        {
             exp: [],
             inc: []
         },
-        totals: {
+        totals: 
+        {
             exp: 0,
             inc: 0
         },
@@ -36,8 +38,10 @@
     return {
         addItem: (type, desc, val) => {
             let newItem, ID;
-            if (data.allItems[type].length > 0)
+            if (data.allItems[type].length > 0){
                 ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+                console.log(ID);
+            }
             else ID = 0;
 
             if (type === "exp") newItem = new Expense(ID, desc, val);
@@ -95,26 +99,8 @@ var UIController = (function () {
             };
         },
         addListItem: (obj, type) => {
-            var html, newHtml, element;
-
-            if (type === 'inc') {
-                element = DOMStrings.incomeContainer;
-                html = "<div class='inc-item row' id='inc-%id%'><div class='item-desc col-md-5'>%description%</div><div class='col-md-3'></div><div class='right clearfix col-md-4'><div class='item-value mr-1'>%value%<span class='badge badge-danger ml-5'>X</span></div></div></div>";
-            }
-            else if (type === 'exp') {
-                element = DOMStrings.expenseContainer;
-                html = "<div class='exp-item row' id='exp-%id%'><div class='item-desc col-md-5'>%description%</div><div class='col-md-3'></div><div class='right clearfix col-md-4'><div class='item-value mr-1'>%value%<span class='badge badge-danger ml-5'>X</span></div></div></div>";
-            }
-
-
-            newHtml = html.replace('%id%', obj.id);
-            newHtml = newHtml.replace('%description%', obj.description);
-            newHtml = newHtml.replace('%value%', obj.value);
-            //console.log(newHtml, element);
-
-
-            document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
-
+            let t = type==='inc'?'inc-':'exp-'
+            document.querySelector(type==='inc'?DOMStrings.incomeContainer:DOMStrings.expenseContainer).insertAdjacentHTML('beforeend', "<div class='"+t+"item row' id='"+t+""+obj.id+"'><div class='item-desc col-md-5'>"+obj.description+"</div><div class='col-md-3'></div><div class='right clearfix col-md-4'><div class='item-value mr-1'>"+obj.value+"<span class='badge badge-danger ml-5'>X</span></div></div></div>")
         },
 
 
@@ -210,9 +196,9 @@ var controller = (function (bdgtCtrl, UICtrl) {
     };
 })(budgetController, UIController); 
 
-controller.init();*/
-function sum(a, b) {
-    return a + b;
-}
+controller.init();
+// function sum(a, b) {
+//     return a + b;
+// }
 
-module.exports = sum;
+// module.exports = sum;
