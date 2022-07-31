@@ -40,14 +40,18 @@ var budgetController = (function () {
             let newItem, ID;
             if (data.allItems[type].length > 0){
                 ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
-                console.log(ID);
             }
             else ID = 0;
 
             if (type === "exp") newItem = new Expense(ID, desc, val);
-            else if (type === "inc") newItem = new Expense(ID, desc, val);
+            else if (type === "inc") newItem = new Income(ID, desc, val);
             data.allItems[type].push(newItem);
             return newItem;
+        },
+        removeItem: (type,id) => {
+            console.log("before"+data.allItems[type]);
+            data.allItems[type] = data.allItems[type].filter(item=>item.id !== id)
+            console.log("after"+data.allItems[type]);
         },
         calculateBudget: () => {
             calculateTotal('exp');
@@ -115,13 +119,18 @@ var UIController = (function () {
         },
 
         displayBudget: (obj) => {
-            document.querySelector(DOMStrings.budgetTotal).textContent = obj.budget;
+            document.querySelector(DOMStrings.budgetTotal).style.setProperty("--budget", obj.budget);
             document.querySelector(DOMStrings.totalIncome).textContent = obj.totalInc;
             document.querySelector(DOMStrings.totalExpense).textContent = obj.totalExp;
-            if (obj.percentage > 0)
-                document.querySelector(DOMStrings.expensePercentage).textContent = obj.percentage + '%';
-            else
-                document.querySelector(DOMStrings.expensePercentage).textContent = '--';
+
+            if (obj.budget != 0)
+            document.querySelector(DOMStrings.expensePercentage).style.setProperty("--perc", obj.percentage);
+
+
+        },
+        removeListItem: (elId) =>{
+            var el = document.getElementById(elId);
+                el.parentNode.removeChild(el);
         },
         getDOMStrings: () => {
             return DOMStrings;
@@ -132,9 +141,9 @@ var UIController = (function () {
 var controller = (function (bdgtCtrl, UICtrl) {
 
 
-
     var setEventListener = () => {
         var DOM = UICtrl.getDOMStrings();
+        var uiInput = UICtrl.getInput();
         document
             .querySelector(DOM.inputButton)
             .addEventListener("click", ctrlAddItem);
@@ -158,6 +167,8 @@ var controller = (function (bdgtCtrl, UICtrl) {
 
     var ctrlAddItem = () => {
         var input, newItem;
+        
+        
 
         input = UICtrl.getInput();
 
@@ -166,18 +177,28 @@ var controller = (function (bdgtCtrl, UICtrl) {
 
             UICtrl.addListItem(newItem, input.type);
 
+            var elId = input.type+"-"+newItem.id
+
+            document
+            .querySelector("#"+elId+" .badge-danger")
+            .addEventListener("click",() => {
+                UICtrl.removeListItem(elId);
+                //remove item from the list
+                bdgtCtrl.removeItem(input.type,newItem.id)
+                updateBudget();
+            })
+
             UICtrl.clearFields();
 
             updateBudget();
         }
 
-
+    };
         //get the input data
-        //add the item to data structure
+        //add the item to data structure or delete
         //show to the ui
         //calculate the budget
         //update the ui
-    };
 
     return {
         init: () => {
@@ -197,8 +218,3 @@ var controller = (function (bdgtCtrl, UICtrl) {
 })(budgetController, UIController); 
 
 controller.init();
-// function sum(a, b) {
-//     return a + b;
-// }
-
-// module.exports = sum;
