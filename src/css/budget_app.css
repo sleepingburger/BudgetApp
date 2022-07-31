@@ -2,6 +2,21 @@
     --mainGreyish: #343a40;
 }
 
+
+
+@property --perc {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+}
+
+@property --budget {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+}
+
+
 .budget-header {
     margin-top: 1rem;
     background: linear-gradient(
@@ -28,6 +43,9 @@
         "Lucida Sans", Arial, sans-serif;
     font-weight: lighter;
     font-size: 30px;
+    transition: --budget 2s;
+    counter-reset: budget var(--budget);
+
 }
 
 .budget-top > h2 {
@@ -130,13 +148,28 @@
 }
 
 
-
+.badge-danger{
+    cursor: pointer;
+}
 .inc-item,.exp-item{
     padding: 15px;
     margin-left: 40px;
     margin-right: 20px;
 }
 
+
+.exp-percentage{
+    transition: --perc 1s;
+    counter-reset: perc var(--perc);
+}
+
+.exp-percentage::before {
+    content: counter(perc);
+}
+
+.budget-total::before {
+    content: counter(budget);
+}
 /* .item-desc,
 .right {
     display: inline-flex;
